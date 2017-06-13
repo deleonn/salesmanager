@@ -1,0 +1,8 @@
+.main-content{
+  margin-left: 300px;
+  background: #DDE4EB;
+  height: 100vh;
+  overflow-y: scroll;
+  font-weight: 500;
+  padding: 0px 50px;
+}

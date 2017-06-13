@@ -1,0 +1,27 @@
+<div class="section-indicator">
+  <p class="title">Almacén</p>
+  <p><small>Recursos en existencia</small></p>
+</div>
+<div class="card">
+  <p class="card-title">
+    Artículos
+  </p>
+  <table>
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td>Nombre</td>
+        <td>Stock</td>
+        <td>Descripción</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let s of storageData'>
+        <td>{{s.id}}</td>
+        <td>{{s.name}}</td>
+        <td>{{s.in_stock}}</td>
+        <td style="color:gray;font-size:13px;">{{s.description}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

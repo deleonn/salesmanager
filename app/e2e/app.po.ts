@@ -1,6 +1,6 @@
-import { browser, by, element } from 'protractor';
+import { browser, element, by } from 'protractor';
 
-export class NgRoutesBoilerplatePage {
+export class Angular2RoutesBoilerplatePage {
   navigateTo() {
     return browser.get('/');
   }

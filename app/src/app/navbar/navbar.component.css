@@ -1,0 +1,41 @@
+.navbar{
+  height: 70px;
+  width: 100%;
+  background-color: transparent;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 18px;
+  line-height: 70px;
+  font-weight: 500;
+  margin-bottom: 50px;
+}
+.inner-navbar{
+  padding: 0px;
+}
+.left-menu{
+  float: left;
+  height: inherit;
+  width: 50%;
+}
+.left-menu .brand{
+  font-weight: 600;
+  opacity: .1;
+  font-size: 50px;
+}
+.right-menu{
+  float: right;
+  height: inherit;
+}
+.menu-list{
+  display: inline-block;
+}
+.menu-list .notification-bell{
+  color: #1158FF;
+}
+.menu-item{
+  float: left;
+  padding: 0px 10px;
+}
+md-icon{
+  vertical-align: sub;
+}

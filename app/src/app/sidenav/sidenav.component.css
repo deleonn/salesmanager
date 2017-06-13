@@ -1,0 +1,63 @@
+.sidenav{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 300px;
+  background-color: #FAFBFC;
+  display: block;
+  color: #2D2D2D;
+  padding: 20px 0px;
+}
+.welcome{
+  margin-top: 0px;
+  padding: 20px 20px;
+}
+.welcome .profile-photo{
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  vertical-align: middle;
+  margin: 10px 10px;
+}
+.welcome p{
+  font-size: 20px;
+}
+.welcome span{
+  opacity: .7;
+}
+.welcome small{
+  font-size: 14px;
+  color: #B4C2C9;
+}
+.menu-list{
+  padding: 0px;
+  font-weight: 600;
+}
+.menu-item{
+  padding: 10px 20px;
+  width: 100%;
+  display: block;
+  opacity: .7;
+  border-top: 1px solid rgba(130, 132, 136, 0.1);
+}
+.menu-item:hover{
+  opacity: .5;
+}
+md-icon{
+  vertical-align: sub;
+  margin-right: 30px;
+  color: #B4C2C9;
+}
+.active{
+  background-color: rgba(130, 132, 136, 0.1);
+  opacity: 1;
+  color: #1158FF;
+}
+.active md-icon{
+  color: #1158FF;
+}
+.home-active{
+  background-color: rgba(130, 132, 136, 0.1);
+  opacity: 1;
+}

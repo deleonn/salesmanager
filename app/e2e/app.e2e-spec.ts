@@ -1,16 +1,14 @@
-import { NgRoutesBoilerplatePage } from './app.po';
+import { Angular2RoutesBoilerplatePage } from './app.po';
 
-describe('ng-routes-boilerplate App', () => {
-  let page: NgRoutesBoilerplatePage;
+describe('angular2-routes-boilerplate App', function() {
+  let page: Angular2RoutesBoilerplatePage;
 
   beforeEach(() => {
-    page = new NgRoutesBoilerplatePage();
+    page = new Angular2RoutesBoilerplatePage();
   });
 
-  it('should display welcome message', done => {
+  it('should display message saying app works', () => {
     page.navigateTo();
-    page.getParagraphText()
-      .then(msg => expect(msg).toEqual('Welcome to app!!'))
-      .then(done, done.fail);
+    expect(page.getParagraphText()).toEqual('app works!');
   });
 });
