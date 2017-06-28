@@ -32,6 +32,8 @@ Dodger Blue
 #1158FF
 rgb(122, 124, 235)
 */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
 *{
   margin: 0;
   padding: 0;
@@ -155,4 +157,24 @@ table tbody tr .actions .action-item {
 
 table tbody tr .actions .action-item:hover {
 	opacity: 0.7;
+}
+
+.incomplete {
+  color: #d07e3a;
+}
+
+.complete {
+  color: #3ad072;
+}
+
+.delivered {
+  color: #7A7CEB;
+}
+
+.action-icons {
+  color: #B4C2C9;
+}
+
+.action-icons:hover {
+  color: #63676A;
 }

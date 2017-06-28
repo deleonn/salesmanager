@@ -2,7 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MdButtonModule, MdCheckboxModule, MdIconModule } from '@angular/material';
+
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MdButtonModule, MdCheckboxModule, MdIconModule, MdTooltipModule, MdSnackBarModule } from '@angular/material';
 
 import 'hammerjs';
 
@@ -21,6 +23,7 @@ import { StorageComponent } from './storage/storage.component';
 import { StorageService } from './storage/storage.service';
 import { InventoryComponent } from './inventory/inventory.component';
 import { NewComponent } from './new/new.component';
+import { OrdersComponent } from './orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -34,13 +37,17 @@ import { NewComponent } from './new/new.component';
     SidenavComponent,
     StorageComponent,
     InventoryComponent,
-    NewComponent
+    NewComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     routing,
+    BrowserAnimationsModule,
+    MdTooltipModule,
+    MdSnackBarModule,
     MdButtonModule,
     MdCheckboxModule,
     MdIconModule

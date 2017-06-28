@@ -16,3 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::resource('orders', 'OrdersController');
+Route::post('orders/markAsComplete', 'OrdersController@markAsComplete');
+Route::post('orders/markAsDelivered', 'OrdersController@markAsDelivered');

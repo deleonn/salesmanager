@@ -1,0 +1,36 @@
+<div class="card">
+  <p class="card-title">
+    Registro
+  </p>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Cantidad</th>
+        <th>Costo Total</th>
+        <th>Gramos</th>
+        <th>Fecha de Entrega</th>
+        <th>Estatus</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let o of orders'>
+        <td>{{o.id}}</td>
+        <td>{{o.customer_name}}</td>
+        <td>{{o.quantity}}</td>
+        <td>{{o.total_cost | currency:'MXN':true}}</td>
+        <td>{{o.total_grams}}</td>
+        <td>{{o.delivery | date:'medium'}}</td>
+        <td *ngIf='o.status == 0' class="incomplete">Incompleto</td>
+        <td *ngIf='o.status == 1' class="complete">Completo</td>
+        <td *ngIf='o.status == 2' class="delivered">Entregado</td>
+        <td>
+          <md-icon *ngIf='o.status == 0' mdTooltip='Marcar como Completado' (click)='markAsComplete(o.id)' class='action-icons'>done</md-icon>
+          <md-icon *ngIf='o.status == 1' mdTooltip='Marcar como Entregado' (click)='markAsDelivered(o.id)' class='action-icons'>thumb_up</md-icon>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
