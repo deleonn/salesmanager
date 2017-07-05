@@ -30,9 +30,6 @@ export class OverviewService {
 
   private extractData(res: Response){
     let body = res.json();
-    if (body.data === 0) {
-        return '0';
-    }
     return body.data || { };
   }
 

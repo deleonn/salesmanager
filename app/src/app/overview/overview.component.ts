@@ -1,8 +1,12 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { OverviewService } from './overview.service';
+import { ConfigService } from '../config.service';
 import { MdSnackBar } from '@angular/material';
 
+
 import { Funds } from './funds';
+
+import * as io from 'socket.io-client';
 
 @Component({
   selector: 'overview',
@@ -12,16 +16,23 @@ import { Funds } from './funds';
 })
 export class OverviewComponent implements OnInit, OnChanges {
 
+  constructor( private overviewService: OverviewService, private snackBar: MdSnackBar, private config: ConfigService ) { }
+
   funds: Funds[];
   incompleteOrders: number;
   completeOrders: number;
-
-  constructor( private overviewService: OverviewService, private snackBar: MdSnackBar ) { }
+  socket = io(this.config.socketUrl);
 
   ngOnInit() {
     this.getFunds();
-    this.getIncompleteOrders();
     this.getCompleteOrders();
+    this.getIncompleteOrders();
+
+    this.socket.on('emit', (data) => {
+      alert('socket called');
+      console.warn(data);
+      this.getFunds();
+    });
   }
 
   ngOnChanges() {

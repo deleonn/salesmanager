@@ -5,6 +5,7 @@ import { ConfigService } from '../config.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import * as io from 'socket.io-client';
 
 import { Order } from './order';
 
@@ -13,6 +14,8 @@ import { Order } from './order';
 export class OrderService {
 
   constructor( private http: Http, private config: ConfigService ) { }
+
+  socket = io(this.config.socketUrl);
 
   getOrders(): Observable<Order[]>{
     return this.http.get(this.config.apiUrl+'/orders')
@@ -31,6 +34,8 @@ export class OrderService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
+    this.emitSocket();
+
     return this.http.post(this.config.apiUrl+'/orders/markAsDelivered', { id }, options)
         .map(this.extractData);
   }
@@ -38,6 +43,10 @@ export class OrderService {
   private extractData(res: Response){
     let body = res.json();
     return body.data || { };
+  }
+
+  emitSocket() {
+    this.socket.emit('deliver', {message: 'hello'});
   }
 
 }

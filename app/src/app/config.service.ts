@@ -6,6 +6,7 @@ export class ConfigService {
   constructor() { }
 
   public brand: string = 'SalesManager';
-  public apiUrl: string = 'http://salesmanager.dev/api';
+  public apiUrl: string = 'http://localhost:3333/api';
+  public socketUrl: string = 'http://127.0.0.1:3000';
 
 }

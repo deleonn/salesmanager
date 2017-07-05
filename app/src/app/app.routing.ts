@@ -5,9 +5,7 @@ import { AuthGuard } from './auth-guard.service';
 import { MainComponent } from './main/main.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { StorageComponent } from './storage/storage.component';
 import { InventoryComponent } from './inventory/inventory.component';
-import { NewComponent } from './new/new.component';
 
 const appRoutes: Routes = [
   {

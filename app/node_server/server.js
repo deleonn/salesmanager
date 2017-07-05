@@ -17,22 +17,11 @@ io.on('connection', function (socket) {
   clients++;
   console.log("\033[0;32m +\033[0m clients: " + clients);
 
-    socket.on('emit', (data) => {
-        socket.emit(data.channel, data);
+    socket.on('deliver', (data) => {
+        io.emit('emit', {type:'new-deliver', text: data});
         console.log(data);
     });
 
-    // var message_json = JSON.parse(message);
-    // if (channel == "update"){
-    //   // console.log(message_json);
-    //   socket.emit('update', message_json);
-    //   console.log("new " + message_json.type + " in channel " + channel);
-    // }
-    // if (channel == "bell"){
-    //   // console.log(message_json);
-    //   socket.emit('bell', message_json);
-    //   console.log("new " + message_json.type + " in channel " + channel);
-    // }
     socket.on('disconnect', function() {
       clients--;
       console.log("\033[1;31m -\033[0m clients: " + clients);
