@@ -24,16 +24,8 @@ const appRoutes: Routes = [
         component: HomeComponent
       },
       {
-        path: 'almacen',
-        component: StorageComponent
-      },
-      {
         path: 'registro',
         component: InventoryComponent
-      },
-      {
-        path: 'nueva_entrada',
-        component: NewComponent
       },
     ]
   },

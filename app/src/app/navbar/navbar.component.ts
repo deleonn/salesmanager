@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfigService } from '../config.service';
 
 @Component({
   selector: 'navbar',
@@ -8,8 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
   brand:string;
 
-  constructor() {
-    this.brand = "SalesManager";
+  constructor( private config: ConfigService ) {
+    this.brand = this.config.brand;
   }
 
   ngOnInit() {

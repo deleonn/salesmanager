@@ -20,3 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::resource('orders', 'OrdersController');
 Route::post('orders/markAsComplete', 'OrdersController@markAsComplete');
 Route::post('orders/markAsDelivered', 'OrdersController@markAsDelivered');
+Route::get('overview/get_funds', 'OverviewController@getFunds');

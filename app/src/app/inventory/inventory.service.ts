@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { ConfigService } from '../config.service';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -9,10 +10,10 @@ import { Inventory } from './inventory';
 
 @Injectable()
 export class InventoryService {
-  constructor( private http:Http ){ }
+  constructor( private http: Http, private config: ConfigService ){ }
 
   getInventory(): Observable<Inventory[]>{
-    return this.http.get('http://api.stockpile.app/v1/entries_list')
+    return this.http.get(this.config.apiUrl+'/something')
         .map(this.extractData);
   }
 

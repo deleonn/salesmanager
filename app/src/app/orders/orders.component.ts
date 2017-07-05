@@ -14,6 +14,7 @@ export class OrdersComponent implements OnInit {
 
   orders: Order[];
   complete: number;
+  error: string;
 
   constructor( private orderService: OrderService, private snackBar: MdSnackBar ) { }
 
@@ -23,7 +24,10 @@ export class OrdersComponent implements OnInit {
 
   getOrders() {
     this.orderService.getOrders()
-      .subscribe(orders => this.orders = orders);
+      .subscribe(
+        orders => this.orders = orders,
+        error => this.error = 'error'
+      );
   }
 
   markAsComplete(id) {
@@ -33,9 +37,9 @@ export class OrdersComponent implements OnInit {
           this.getOrders();
           this.snackBar.open('Se ha completado la orden!', 'OK', {
             duration: 3000,
-          })
-          }, error => {
-        }
+          });
+        },
+        error => this.error = 'error'
       );
   }
 
@@ -46,14 +50,14 @@ export class OrdersComponent implements OnInit {
           this.getOrders();
           this.snackBar.open('Se ha entregado la orden!', 'OK', {
             duration: 3000,
-          })
-          }, error => {
-        }
+          });
+          },
+          error => this.error = 'error'
       );
   }
 
   deleteFromList() {
-    
+
   }
 
 }
