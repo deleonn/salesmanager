@@ -14,4 +14,18 @@ class OverviewController extends Controller
       $response['data'] = $funds;
       return Response::json($response, 200);
     }
+
+    public function getCompleteOrders()
+    {
+      $complete = Order::where('status', 2)->count();
+      $response['data'] = $complete;
+      return Response::json($response, 200);
+    }
+    
+    public function getIncompleteOrders()
+    {
+      $incomplete = Order::where('status', 0)->orWhere('status', 1)->count();
+      $response['data'] = $incomplete;
+      return Response::json($response, 200);
+    }
 }

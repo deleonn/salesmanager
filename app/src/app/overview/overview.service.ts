@@ -15,11 +15,24 @@ export class OverviewService {
 
   getFunds(): Observable<Funds[]>{
     return this.http.get(this.config.apiUrl+'/overview/get_funds')
-        .map(this.extractData);
+        .map(this.extractData)
+  }
+
+  getCompleteOrders() {
+    return this.http.get(this.config.apiUrl+'/overview/get_complete_orders')
+        .map(this.extractData)
+  }
+
+  getIncompleteOrders() {
+    return this.http.get(this.config.apiUrl+'/overview/get_incomplete_orders')
+        .map(this.extractData)
   }
 
   private extractData(res: Response){
     let body = res.json();
+    if (body.data === 0) {
+        return '0';
+    }
     return body.data || { };
   }
 

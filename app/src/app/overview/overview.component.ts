@@ -13,11 +13,15 @@ import { Funds } from './funds';
 export class OverviewComponent implements OnInit, OnChanges {
 
   funds: Funds[];
+  incompleteOrders: number;
+  completeOrders: number;
 
   constructor( private overviewService: OverviewService, private snackBar: MdSnackBar ) { }
 
   ngOnInit() {
     this.getFunds();
+    this.getIncompleteOrders();
+    this.getCompleteOrders();
   }
 
   ngOnChanges() {
@@ -26,7 +30,17 @@ export class OverviewComponent implements OnInit, OnChanges {
 
   getFunds() {
     this.overviewService.getFunds()
-      .subscribe(funds => this.funds = funds);
+      .subscribe(res => this.funds = res);
+  }
+
+  getCompleteOrders() {
+    this.overviewService.getCompleteOrders()
+      .subscribe(res => this.completeOrders = res);
+  }
+
+  getIncompleteOrders() {
+    this.overviewService.getIncompleteOrders()
+      .subscribe(res => this.incompleteOrders = res);
   }
 
 }

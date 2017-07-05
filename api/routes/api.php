@@ -21,3 +21,5 @@ Route::resource('orders', 'OrdersController');
 Route::post('orders/markAsComplete', 'OrdersController@markAsComplete');
 Route::post('orders/markAsDelivered', 'OrdersController@markAsDelivered');
 Route::get('overview/get_funds', 'OverviewController@getFunds');
+Route::get('overview/get_incomplete_orders', 'OverviewController@getIncompleteOrders');
+Route::get('overview/get_complete_orders', 'OverviewController@getCompleteOrders');
