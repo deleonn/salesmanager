@@ -2,33 +2,55 @@
   <p class="title">Registro</p>
   <p><small>Entrada de Productos</small></p>
 </div>
-<div class="card" *ngFor="let s of inventoryData">
-  <div>
-    <div class="card-title">
-      <p align="right"><small>{{s.created_at}}</small></p>
-      <p> {{s.id}} </p>
+<div class="card">
+  <p class="card-title">
+    Da de alta un nuevo pedido
+  </p>
+  <div class="container u-full-width">
+    <div class="row u-full-width">
+      <form>
+        <div class="input-group">
+          <div class="nine columns">
+            <label for="">Nombre del cliente</label>
+            <input class="u-full-width" type="text">
+          </div>
+          <div class="three columns">
+            <label for="">Cantidad</label>
+            <input class="u-full-width" type="number">
+          </div>
+        </div>
+        <div class="input-group">
+          <div class="six columns">
+            <label for="">Costo total</label>
+            <input class="u-full-width" type="text">
+          </div>
+          <div class="six columns">
+            <label for="">Gramos</label>
+            <input class="u-full-width" type="text">
+          </div>
+        </div>
+        <div class="input-group">
+          <div class="twelve columns">
+            <label for="">Fecha</label>
+            <input type="text"  class="u-full-width">
+          </div>
+        </div>
+        <div class="input-group">
+          <div class="two columns u-pull-left">
+            <label for="">Hora</label>
+            <input type="number" class="time">
+          </div>
+          <div class="two columns u-pull-left">
+            <label for="">Minutos</label>
+            <input type="number" class="time">
+          </div>
+          <div class="offset-by-six two columns">
+            <span [ngClass]="{'checked': !checked}">AM</span>
+            <md-slide-toggle color="primary" [checked]="checked" [(ngModel)]="checked" [ngModelOptions]="{standalone: true}"></md-slide-toggle>
+            <span [ngClass]="{'checked': checked}">PM</span>
+          </div>
+        </div>
+      </form>
     </div>
-
-    <tr>
-      <table>
-        <tr>
-          <td>Cantidad</td>
-          <td>No. Molde</td>
-          <td>Descripción</td>
-          <td>Máquina</td>
-        </tr>
-        <tr *ngFor="let e of s.entry">
-          <td>{{e.quantity}}</td>
-          <td>{{e.item.name}}</td>
-          <td>{{e.description}}</td>
-          <td>{{e.machine.name}}</td>
-        </tr>
-      </table>
-    </tr>
-
-  </div>
-  <div style="color:gray;font-size:13px;">
-    <p>{{s.turn}}</p>
-    {{s.comment}}
   </div>
 </div>

@@ -61,3 +61,8 @@ md-icon{
   background-color: rgba(130, 132, 136, 0.1);
   opacity: 1;
 }
+@media screen and (max-width: 768px) {
+  .sidenav {
+    display: none;
+  }
+}

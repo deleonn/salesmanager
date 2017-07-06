@@ -12,6 +12,7 @@ import { Inventory } from './inventory';
 export class InventoryComponent implements OnInit {
 
   inventoryData:Inventory[];
+  checked: boolean;
 
   constructor(private inventoryService: InventoryService) { }
 

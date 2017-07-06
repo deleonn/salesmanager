@@ -23,6 +23,8 @@ Route.on('/').render('welcome');
 Route.group('api', function(){
   Route.resource('/users', 'UserController')
   Route.resource('/orders', 'OrderController')
+  Route.post('/orders/markAsComplete', 'OrderController.markAsComplete')
+  Route.post('/orders/markAsDelivered', 'OrderController.markAsDelivered')
   Route.get('/overview/get_funds', 'OverviewController.getFunds')
   Route.get('/overview/get_complete_orders', 'OverviewController.getCompleteOrders')
   Route.get('/overview/get_incomplete_orders', 'OverviewController.getIncompleteOrders')

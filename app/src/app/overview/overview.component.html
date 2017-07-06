@@ -1,15 +1,19 @@
 <div class="overview">
-  <div class="column funds">
-    <!-- <p class="text" *ngIf="funds[0].total === null">$0.00 <span>Ganancias</span></p> -->
-    <p class="text" *ngIf="funds[0].total !== null">${{funds[0].total}} MXN <span>Ganancias</span></p>
-  </div>
-  <div class="column cutters-last-month">
-    <p class="text">56 <span>Cortadores en el último mes</span></p>
-  </div>
-  <div class="column total-orders">
-    <p class="text">{{completeOrders[0].total | json}} <span>Pedidos entregados</span></p>
-  </div>
-  <div class="column incomplete-orders">
-    <p class="text">{{incompleteOrders[0].total}} <span>Pedidos sin entregar</span></p>
+  <div class="container u-full-width">
+    <div class="row u-full-width">
+      <div class="three columns funds">
+        <p class="text" *ngIf="funds[0].total === null">$0.00 <span>Ganancias</span></p>
+        <p class="text" *ngIf="funds[0].total !== null">${{funds[0].total}} <span>Utilidad</span></p>
+      </div>
+      <div class="three columns cutters-last-month">
+        <p class="text">56 <span>Cortadores en el último mes</span></p>
+      </div>
+      <div class="three columns total-orders">
+        <p class="text">{{completeOrders[0].total | json}} <span>Pedidos entregados</span></p>
+      </div>
+      <div class="three columns incomplete-orders">
+        <p class="text">{{incompleteOrders[0].total}} <span>Pedidos sin entregar</span></p>
+      </div>
+    </div>
   </div>
 </div>

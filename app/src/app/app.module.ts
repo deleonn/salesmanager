@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { MdButtonModule, MdCheckboxModule, MdIconModule, MdTooltipModule, MdSnackBarModule } from '@angular/material';
+import { MdButtonModule, MdCheckboxModule, MdIconModule, MdTooltipModule, MdSnackBarModule, MdDatepickerModule, MdSlideToggleModule } from '@angular/material';
 
 import 'hammerjs';
 
@@ -46,7 +46,9 @@ import { OverviewComponent } from './overview/overview.component';
     MdSnackBarModule,
     MdButtonModule,
     MdCheckboxModule,
-    MdIconModule
+    MdIconModule,
+    MdDatepickerModule,
+    MdSlideToggleModule
   ],
   providers: [AuthGuard, ConfigService],
   bootstrap: [AppComponent]

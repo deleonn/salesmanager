@@ -14,6 +14,7 @@ class OrdersTableSchema extends Schema {
       table.double('total_grams')
       table.dateTime('delivery')
       table.boolean('status')
+      table.timestamps()
     })
   }
 

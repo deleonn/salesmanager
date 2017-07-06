@@ -32,8 +32,7 @@ Dodger Blue
 #1158FF
 rgb(122, 124, 235)
 */
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
-
+@import '~skeleton-css/css/skeleton.css';
 *{
   margin: 0;
   padding: 0;

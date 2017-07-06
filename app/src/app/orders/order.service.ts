@@ -34,10 +34,11 @@ export class OrderService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    this.emitSocket();
-
     return this.http.post(this.config.apiUrl+'/orders/markAsDelivered', { id }, options)
-        .map(this.extractData);
+        .map(res => {
+          this.extractData,
+          this.emitSocket();
+        });
   }
 
   private extractData(res: Response){

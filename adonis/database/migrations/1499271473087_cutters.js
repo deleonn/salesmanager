@@ -17,6 +17,7 @@ class CuttersTableSchema extends Schema {
       table.decimal('time')
       table.boolean('isModeled')
       table.boolean('isPrinted')
+      table.timestamps()
     })
   }
 

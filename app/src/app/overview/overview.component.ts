@@ -3,7 +3,6 @@ import { OverviewService } from './overview.service';
 import { ConfigService } from '../config.service';
 import { MdSnackBar } from '@angular/material';
 
-
 import { Funds } from './funds';
 
 import * as io from 'socket.io-client';
@@ -29,10 +28,15 @@ export class OverviewComponent implements OnInit, OnChanges {
     this.getIncompleteOrders();
 
     this.socket.on('emit', (data) => {
-      alert('socket called');
+      // alert('socket called');
       console.warn(data);
       this.getFunds();
+      this.getCompleteOrders();
+      this.getIncompleteOrders();
     });
+    return () => {
+     this.socket.disconnect();
+   };  
   }
 
   ngOnChanges() {

@@ -1,3 +1,22 @@
-.card{
+.card {
   margin-bottom: 20px;
+}
+.input-group label {
+  font-weight: 300;
+}
+md-slide-toggle {
+  padding-top: 40px;
+}
+span {
+  border-bottom: 2px solid transparent;
+}
+.checked {
+  font-weight: bold;
+  border-bottom: 2px solid #1158FF;
+}
+.time {
+  border: none;
+  border-radius: 0px;
+  background: transparent;
+  border-bottom: 2px solid #1158FF;
 }

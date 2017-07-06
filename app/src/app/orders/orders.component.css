@@ -1,0 +1,36 @@
+.error {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 300;
+  padding: 10%;
+  background: #FAFBFC;
+}
+.not-found{
+  background-color: #1158FF;
+  color: white;
+  width: 300px;
+}
+.not-found:hover{
+  background-color: #0f4ad5;
+}
+.not-found > div{
+  left: 10px;
+  position: relative;
+  transition: all .2s ease-in;
+}
+.not-found md-icon{
+  vertical-align: middle;
+  opacity: 0;
+  left: 20px;
+  position: relative;
+  transition: all .2s ease-in;
+}
+.not-found:hover > div{
+  /*animation: toLeft .3s ease-in;
+  animation-fill-mode: forwards;*/
+  transform: translateX(-10px);
+}
+.not-found:hover md-icon{
+  opacity: 1;
+  transform: translateX(-10px);
+}
