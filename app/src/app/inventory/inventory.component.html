@@ -10,13 +10,9 @@
     <div class="row u-full-width">
       <form>
         <div class="input-group">
-          <div class="nine columns">
+          <div class="twelve columns">
             <label for="">Nombre del cliente</label>
             <input class="u-full-width" type="text">
-          </div>
-          <div class="three columns">
-            <label for="">Cantidad</label>
-            <input class="u-full-width" type="number">
           </div>
         </div>
         <div class="input-group">
@@ -32,23 +28,41 @@
         <div class="input-group">
           <div class="twelve columns">
             <label for="">Fecha</label>
-            <input type="text"  class="u-full-width">
+            <input type="text"  class="u-full-width" placeholder="{{date}}">
           </div>
         </div>
         <div class="input-group">
           <div class="two columns u-pull-left">
             <label for="">Hora</label>
-            <input type="number" class="time">
+            <input type="number" class="time" placeholder={{hour}} min="1" max="12">
           </div>
           <div class="two columns u-pull-left">
             <label for="">Minutos</label>
-            <input type="number" class="time">
+            <input type="number" class="time" placeholder={{min}} min="0" max=59>
           </div>
-          <div class="offset-by-six two columns">
+          <div class="two columns">
             <span [ngClass]="{'checked': !checked}">AM</span>
             <md-slide-toggle color="primary" [checked]="checked" [(ngModel)]="checked" [ngModelOptions]="{standalone: true}"></md-slide-toggle>
             <span [ngClass]="{'checked': checked}">PM</span>
           </div>
+        </div>
+        <div class="input-group cutters">
+          <div class="row u-full-width cutters">
+            <button class="u-full-width" (click)="addItem()">Añadir un Cortador</button>
+          </div>
+          <ul class="row u-full-width">
+            <li *ngFor="let item of items; let i = index">
+              <input [@flyInOut]="state" type="text" class="three columns cutters" *ngIf="isShowed" placeholder="Nombre">
+              <input [@flyInOut]="state" type="text" class="two columns cutters" *ngIf="isShowed" placeholder="X">
+              <input [@flyInOut]="state" type="text" class="two columns cutters" *ngIf="isShowed" placeholder="Y">
+              <input [@flyInOut]="state" type="text" class="two columns cutters" *ngIf="isShowed" placeholder="Z">
+              <input [@flyInOut]="state" type="text" class="two columns cutters" *ngIf="isShowed" placeholder="Tiempo">
+              <span [@flyInOut]="state" *ngIf="isShowed" class="one columns cutters clickable" (click)="removeItem(i)"><span mdTooltip="Eliminar"><md-icon>remove</md-icon></span></span>
+            </li>
+          </ul>
+        </div>
+        <div class="input-group">
+          <button class="u-pull-right button-primary">Aceptar</button>
         </div>
       </form>
     </div>

@@ -7,7 +7,7 @@
   font-size: 18px;
   line-height: 70px;
   font-weight: 500;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
 }
 .inner-navbar{
   padding: 0px;
@@ -20,7 +20,7 @@
 .left-menu .brand{
   font-weight: 600;
   opacity: .1;
-  font-size: 50px;
+  font-size: 30px;
 }
 .right-menu{
   float: right;

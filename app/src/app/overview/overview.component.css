@@ -19,25 +19,29 @@ span {
   color: #B4C2C9;
 }
 .funds {
-  border-bottom: 3px solid #1158FF;
+  /*border-bottom: 3px solid #1158FF;*/
+  box-shadow: 0px 5px 15px rgba(0,0,0,.1);
 }
 .funds .text {
   color: #1158FF;
 }
 .cutters-last-month {
-  border-bottom: 3px solid #7A7CEB;
+  /*border-bottom: 3px solid #7A7CEB;*/
+  box-shadow: 0px 5px 15px rgba(0,0,0,.1);
 }
 .cutters-last-month .text {
   color: #7A7CEB;
 }
 .total-orders {
-  border-bottom: 3px solid #953ccc;
+  /*border-bottom: 3px solid #953ccc;*/
+  box-shadow: 0px 5px 15px rgba(0,0,0,.1);
 }
 .total-orders .text{
   color: #953ccc;
 }
 .incomplete-orders {
-  border-bottom: 3px solid #c45b49;
+  /*border-bottom: 3px solid #c45b49;*/
+  box-shadow: 0px 5px 15px rgba(0,0,0,.1);
 }
 .incomplete-orders .text{
   color: #c45b49;
