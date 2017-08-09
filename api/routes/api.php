@@ -17,6 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('login', 'UserController@login');
+Route::resource('users', 'UserController');
 Route::resource('orders', 'OrdersController');
 Route::post('orders/markAsComplete', 'OrdersController@markAsComplete');
 Route::post('orders/markAsDelivered', 'OrdersController@markAsDelivered');

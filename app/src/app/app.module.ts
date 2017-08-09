@@ -4,13 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { MdButtonModule, MdCheckboxModule, MdIconModule, MdTooltipModule, MdSnackBarModule, MdDatepickerModule, MdSlideToggleModule, MdSelectModule, MdInputModule, MdNativeDateModule } from '@angular/material';
+import { MdButtonModule, MdCheckboxModule, MdIconModule, MdTooltipModule, MdSnackBarModule, MdDatepickerModule, MdSlideToggleModule, MdSelectModule, MdInputModule, MdNativeDateModule, MdDialogModule } from '@angular/material';
 
 import 'hammerjs';
 
 import { routing } from './app.routing';
 import { AuthGuard } from './auth-guard.service';
 import { ConfigService } from './config.service';
+import { AuthService } from './auth/auth.service';
 
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
@@ -53,9 +54,10 @@ import { RegisterComponent } from './auth/register/register.component';
     MdSlideToggleModule,
     MdSelectModule,
     MdInputModule,
-    MdNativeDateModule
+    MdNativeDateModule,
+    MdDialogModule
   ],
-  providers: [AuthGuard, ConfigService],
+  providers: [AuthGuard, ConfigService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
