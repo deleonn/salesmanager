@@ -23,8 +23,10 @@ const Factory = use('Factory')
 */
 Factory.blueprint('App/Model/User', (fake) => {
   return {
+    name: fake.first() + ' ' + fake.last(),
     username: fake.username(),
     email: fake.email(),
-    password: fake.password()
+    password: 'secret',
+    role_id: 2
   }
 })

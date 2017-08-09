@@ -182,3 +182,15 @@ table tbody tr .actions .action-item:hover {
 .clickable {
   cursor: pointer;
 }
+.disabled {
+  cursor: not-allowed;
+  background-color: #c9c9c9 !important;
+  border: none!important;
+}
+.send-success {
+  text-align: center;
+}
+.send-success .check-icon {
+  font-size: 60px!important;
+  color: #1158FF;
+}

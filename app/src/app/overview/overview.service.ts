@@ -13,7 +13,7 @@ export class OverviewService {
 
   constructor( private http:Http, private config: ConfigService ){ }
 
-  getFunds(): Observable<Funds[]>{
+  getFunds() {
     return this.http.get(this.config.apiUrl+'/overview/get_funds')
         .map(this.extractData)
   }

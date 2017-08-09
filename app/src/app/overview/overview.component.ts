@@ -17,12 +17,15 @@ export class OverviewComponent implements OnInit, OnChanges {
 
   constructor( private overviewService: OverviewService, private snackBar: MdSnackBar, private config: ConfigService ) { }
 
-  funds: Funds[];
-  incompleteOrders: number;
-  completeOrders: number;
+  funds: number;
+  incompleteOrders: string;
+  completeOrders: string;
   socket = io(this.config.socketUrl);
 
   ngOnInit() {
+    this.funds = null;
+    this.completeOrders = null;
+    this.incompleteOrders = null;
     this.getFunds();
     this.getCompleteOrders();
     this.getIncompleteOrders();
@@ -36,7 +39,7 @@ export class OverviewComponent implements OnInit, OnChanges {
     });
     return () => {
      this.socket.disconnect();
-   };  
+   };
   }
 
   ngOnChanges() {
@@ -45,17 +48,23 @@ export class OverviewComponent implements OnInit, OnChanges {
 
   getFunds() {
     this.overviewService.getFunds()
-      .subscribe(res => this.funds = res);
+      .subscribe(res => {
+        if(res[0].total !== 0){
+          this.funds = res[0].total;
+        } else {
+          this.funds = 0;
+        }
+      });
   }
 
   getCompleteOrders() {
     this.overviewService.getCompleteOrders()
-      .subscribe(res => this.completeOrders = res);
+      .subscribe(res => this.completeOrders = res[0].total);
   }
 
   getIncompleteOrders() {
     this.overviewService.getIncompleteOrders()
-      .subscribe(res => this.incompleteOrders = res);
+      .subscribe(res => this.incompleteOrders = res[0].total);
   }
 
 }

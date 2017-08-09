@@ -4,67 +4,79 @@
 </div>
 <div class="card">
   <p class="card-title">
-    Da de alta un nuevo pedido
+
   </p>
   <div class="container u-full-width">
-    <div class="row u-full-width">
-      <form>
+    <div class="u-full-width" [hidden]="submitted">
+      <form #form="ngForm" (ngSubmit)="onSubmit()">
         <div class="input-group">
-          <div class="twelve columns">
-            <label for="">Nombre del cliente</label>
-            <input class="u-full-width" type="text">
-          </div>
+          <md-input-container class="twelve columns">
+            <input mdInput placeholder="Nombre del cliente"
+            required
+            ngControl="customerName"
+            [(ngModel)]="newOrder.customer_name"
+            name="customer_name"
+            #customerName="ngModel">
+          </md-input-container>
         </div>
         <div class="input-group">
-          <div class="six columns">
-            <label for="">Costo total</label>
-            <input class="u-full-width" type="text">
-          </div>
-          <div class="six columns">
-            <label for="">Gramos</label>
-            <input class="u-full-width" type="text">
-          </div>
+          <md-input-container class="eight columns">
+            <input mdInput [mdDatepicker]="picker" placeholder="Elige una fecha" [(ngModel)]="newOrder.date" name="date" required>
+            <button mdSuffix [mdDatepickerToggle]="picker"></button>
+            <md-hint>En formato mes/dia/año</md-hint>
+          </md-input-container>
+          <md-datepicker #picker></md-datepicker>
+          <md-input-container class="four columns">
+            <input mdInput type="time" placeholder="Hora"
+            required
+            ngControl="time"
+            [(ngModel)]="newOrder.time"
+            name="time">
+            <md-hint align="start">24 horas</md-hint>
+          </md-input-container>
         </div>
-        <div class="input-group">
-          <div class="twelve columns">
-            <label for="">Fecha</label>
-            <input type="text"  class="u-full-width" placeholder="{{date}}">
-          </div>
-        </div>
-        <div class="input-group">
-          <div class="two columns u-pull-left">
-            <label for="">Hora</label>
-            <input type="number" class="time" placeholder={{hour}} min="1" max="12">
-          </div>
-          <div class="two columns u-pull-left">
-            <label for="">Minutos</label>
-            <input type="number" class="time" placeholder={{min}} min="0" max=59>
-          </div>
-          <div class="two columns">
-            <span [ngClass]="{'checked': !checked}">AM</span>
-            <md-slide-toggle color="primary" [checked]="checked" [(ngModel)]="checked" [ngModelOptions]="{standalone: true}"></md-slide-toggle>
-            <span [ngClass]="{'checked': checked}">PM</span>
+        <div class="input-group cutters margin-top">
+          <ul class="row u-full-width">
+            <li *ngFor="let item of items; let i = index" class="margin-top">
+              <md-input-container class="three columns">
+                <input mdInput *ngIf="isShowed" placeholder="Nombre" name="name-{{i}}" [(ngModel)]="item.name" #nameInput required>
+              </md-input-container>
+              <md-input-container class="one column">
+                <input mdInput *ngIf="isShowed" placeholder="X" name="x-{{i}}" [(ngModel)]="item.x" #xInput required>
+              </md-input-container>
+              <md-input-container class="one column">
+                <input mdInput *ngIf="isShowed" placeholder="Y" name="y-{{i}}" [(ngModel)]="item.y" #yInput required>
+              </md-input-container>
+              <md-input-container class="one column">
+                <input mdInput *ngIf="isShowed" placeholder="Z" name="z-{{i}}" [(ngModel)]="item.z" #zInput required>
+              </md-input-container>
+              <md-input-container class="two columns">
+                <input mdInput *ngIf="isShowed" placeholder="Tiempo"
+                name="time-{{i}}" [(ngModel)]="item.time" #timeInput required>
+              </md-input-container>
+              <md-input-container class="two columns">
+                <input mdInput *ngIf="isShowed" placeholder="Gramos" name="grams-{{i}}" [(ngModel)]="item.grams" #gramsInput required>
+              </md-input-container>
+              <span *ngIf="isShowed" class="one column offset-by-one clickable margin-top" (click)="removeItem(i)"><span mdTooltip="Eliminar"><md-icon>remove</md-icon></span></span>
+            </li>
+          </ul>
+          <div class="row u-full-width cutters">
+            <button class="u-full-width" (click)="addItem()" type="button">Añadir un Cortador</button>
           </div>
         </div>
         <div class="input-group cutters">
-          <div class="row u-full-width cutters">
-            <button class="u-full-width" (click)="addItem()">Añadir un Cortador</button>
-          </div>
-          <ul class="row u-full-width">
-            <li *ngFor="let item of items; let i = index">
-              <input [@flyInOut]="state" type="text" class="three columns cutters" *ngIf="isShowed" placeholder="Nombre">
-              <input [@flyInOut]="state" type="text" class="two columns cutters" *ngIf="isShowed" placeholder="X">
-              <input [@flyInOut]="state" type="text" class="two columns cutters" *ngIf="isShowed" placeholder="Y">
-              <input [@flyInOut]="state" type="text" class="two columns cutters" *ngIf="isShowed" placeholder="Z">
-              <input [@flyInOut]="state" type="text" class="two columns cutters" *ngIf="isShowed" placeholder="Tiempo">
-              <span [@flyInOut]="state" *ngIf="isShowed" class="one columns cutters clickable" (click)="removeItem(i)"><span mdTooltip="Eliminar"><md-icon>remove</md-icon></span></span>
-            </li>
-          </ul>
-        </div>
-        <div class="input-group">
-          <button class="u-pull-right button-primary">Aceptar</button>
+          <button type="submit" class="u-pull-right button-primary" [ngClass]="{'disabled': !form.form.valid}" [disabled]="!form.form.valid">Aceptar</button>
         </div>
       </form>
+    </div>
+    <div [hidden]="!submitted">
+      <span (click)="back()">Volver</span>
+      <div class="row u-full-width">
+        <div class="send-success">
+          <md-icon class="check-icon">check</md-icon>
+          <h4>¡Felicidades! Los datos fueron enviados con exito.</h4>
+          <button class="btn" routerLink="/dashboard"><div>Ver pedidos<md-icon>arrow_forward</md-icon></div></button>
+        </div>
     </div>
   </div>
 </div>

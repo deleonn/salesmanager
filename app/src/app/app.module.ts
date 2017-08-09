@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { MdButtonModule, MdCheckboxModule, MdIconModule, MdTooltipModule, MdSnackBarModule, MdDatepickerModule, MdSlideToggleModule } from '@angular/material';
+import { MdButtonModule, MdCheckboxModule, MdIconModule, MdTooltipModule, MdSnackBarModule, MdDatepickerModule, MdSlideToggleModule, MdSelectModule, MdInputModule, MdNativeDateModule } from '@angular/material';
 
 import 'hammerjs';
 
@@ -13,8 +13,8 @@ import { AuthGuard } from './auth-guard.service';
 import { ConfigService } from './config.service';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
 import { AuthComponent } from './auth/auth.component';
+import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MainComponent } from './main/main.component';
@@ -22,6 +22,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { InventoryComponent } from './inventory/inventory.component';
 import { OrdersComponent } from './orders/orders.component';
 import { OverviewComponent } from './overview/overview.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { OverviewComponent } from './overview/overview.component';
     SidenavComponent,
     InventoryComponent,
     OrdersComponent,
-    OverviewComponent
+    OverviewComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,10 @@ import { OverviewComponent } from './overview/overview.component';
     MdCheckboxModule,
     MdIconModule,
     MdDatepickerModule,
-    MdSlideToggleModule
+    MdSlideToggleModule,
+    MdSelectModule,
+    MdInputModule,
+    MdNativeDateModule
   ],
   providers: [AuthGuard, ConfigService],
   bootstrap: [AppComponent]

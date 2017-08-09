@@ -11,7 +11,7 @@ import * as moment from 'moment/moment';
 import * as locales from 'moment/min/locales';
 moment.locale('es');
 
-import { Inventory } from './inventory';
+import { Order } from '../orders/order';
 import { Cutter } from './cutter';
 
 @Component({
@@ -31,36 +31,24 @@ import { Cutter } from './cutter';
 })
 export class InventoryComponent implements OnInit {
 
-  inventoryData:Inventory[];
+  newOrder: Order;
+  newCutter: Cutter[];
+  items = [];
+  response: string;
+
   checked: boolean;
   state: string = "in";
   isShowed: boolean = false;
-  items = [];
-  date = moment().format('LL');
-  hour = moment().format('h');
-  min = moment().format('mm');
-  meridiem = moment().format('a');
+  submitted: boolean = false;
 
   constructor(private inventoryService: InventoryService) { }
 
   ngOnInit() {
-    // this.getInventory();
-    if (this.meridiem == 'pm') {
-        this.checked = true;
-    }
+    this.newOrder = new Order();
   }
-
-  getInventory(){
-    this.inventoryService.getInventory()
-      .subscribe(inventoryData => this.inventoryData = inventoryData)
-  }
-
-  submitted = false;
-
-  onSubmit() { this.submitted = true; }
 
   addItem() {
-    this.items.push({tag:'item'});
+    this.items.push({});
     this.isShowed = true;
     this.state = (this.state === 'in' ? '':'in');
     console.warn(this.items.length);
@@ -68,6 +56,24 @@ export class InventoryComponent implements OnInit {
 
   removeItem(index) {
     this.items.splice(index, 1);
+  }
+
+  onSubmit() {
+    this.submitted = true;
+    this.inventoryService.insertOrder(this.newOrder, this.items)
+      .subscribe(
+        res => {
+          this.response = res;
+        },
+        err => {
+          console.warn('error')
+        }
+      );
+  }
+
+  back() {
+    this.newOrder = new Order();
+    this.submitted = false;
   }
 
 

@@ -14,16 +14,25 @@ span {
   font-weight: bold;
   border-bottom: 2px solid #1158FF;
 }
-.time {
-  border: none;
-  border-radius: 0px;
-  background: transparent;
-  border-bottom: 2px solid #1158FF;
-}
 .cutters {
   margin-top: 3%;
 }
 .cutters md-icon {
   display: inline-block;
   vertical-align: middle;
+}
+md-input-container.client {
+  width: 100%;
+}
+md-input-container.date {
+  width: 60%;
+}
+md-input-container.time {
+  width: 10%;
+}
+md-input-container.small-input {
+  width: 60px;
+}
+.margin-top {
+  margin-top: 20px;
 }

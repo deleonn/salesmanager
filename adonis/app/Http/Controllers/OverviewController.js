@@ -6,7 +6,11 @@ class OverviewController {
 
   * getFunds(request, response) {
     const funds = yield Order.query().where('status', 2).sum('total_cost as total')
-    yield response.json({data: funds})
+    if (funds[0].total != null) {
+      yield response.json({data: funds})
+    } else {
+      response.json({data: 0})
+    }
   }
 
   * getCompleteOrders(request, response) {

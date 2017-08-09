@@ -4,4 +4,5 @@ export class Cutter {
   public y: number;
   public z: number;
   public time: number;
+  public grams: number;
 }

@@ -17,6 +17,15 @@ export class InventoryService {
         .map(this.extractData);
   }
 
+  insertOrder(order, items): Observable<null>{
+    console.warn(items);
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.post(this.config.apiUrl+'/orders', { order, items }, options)
+        .map(this.extractData)
+  }
+
   private extractData(res: Response){
     let body = res.json();
     return body || { };

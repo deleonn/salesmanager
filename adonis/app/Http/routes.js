@@ -21,6 +21,8 @@ Route.on('/').render('welcome');
 
 
 Route.group('api', function(){
+  Route.post('/login', 'UserController.login')
+
   Route.resource('/users', 'UserController')
   Route.resource('/orders', 'OrderController')
   Route.post('/orders/markAsComplete', 'OrderController.markAsComplete')

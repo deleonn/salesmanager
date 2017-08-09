@@ -12,12 +12,22 @@
 |
 */
 
-// const Factory = use('Factory')
+const Factory = use('Factory')
+const Database = use('Database')
 
 class DatabaseSeeder {
 
   * run () {
-    // yield Factory.model('App/Model/User').create(5)
+    yield Database
+    .table('roles')
+    .insert({name: 'Admin', id: 1})
+
+    yield Database
+    .table('roles')
+    .insert({name: 'User', id: 2})
+
+    yield Factory.model('App/Model/User').create(5)
+
   }
 
 }
